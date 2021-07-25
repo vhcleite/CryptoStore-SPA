@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Content } from 'src/app/models/content.model';
 
 @Component({
   selector: 'app-content-base',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContentBaseComponent implements OnInit {
 
+  selectedContent: Content
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  OnContentSelected(selectedContent: Content) {
+    this.selectedContent = selectedContent;
+    console.log(selectedContent);
   }
 
 }

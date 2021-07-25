@@ -4,10 +4,10 @@
     </div>
     <div class="row">
         <div class="col-md-3">
-            <app-content-list></app-content-list>
+            <app-content-list (contentSelected)="OnContentSelected($event)"></app-content-list>
         </div>
         <div class="col-md-9">
-            <app-content-detail></app-content-detail>
+            <app-content-detail [content]="selectedContent"></app-content-detail>
         </div>
     </div>
 </div>
