@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Content } from 'src/app/models/content.model';
+import { ContentService } from 'src/app/services/content.service';
 
 @Component({
   selector: 'app-content-list',
@@ -8,19 +9,20 @@ import { Content } from 'src/app/models/content.model';
 })
 export class ContentListComponent implements OnInit {
 
-  contents: Content[] = [
-    new Content(1, 'Aula 1', 'fkuinhrgyu bgub rg ergre gerng uun iunnuvnufdnvndfvu nfd unuinfinvfd vnf', 0.01, 'ACTIVE', 'BOUGTH'),
-    new Content(2, 'Aula 2', 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati', 200.2, 'ACTIVE', 'BOUGTH')
-  ]
+  contents: Content[] = []
 
   @Output('contentSelected') contentSelected = new EventEmitter<Content>();
   
-  constructor() { }
+  constructor(private contentService: ContentService) { }
 
   ngOnInit(): void {
-    if(this.contents.length != 0) {
-      this.contentSelected.emit(this.contents[0]);
-    }
+    this.contentService.getContentList()
+      .subscribe(contentsPage => {
+        console.log(contentsPage.content);
+
+        this.contents = []
+        contentsPage.content.forEach(c => this.contents.push(c))
+      })
   }
 
   onSelected(content: Content) {

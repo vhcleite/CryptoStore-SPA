@@ -4,7 +4,7 @@ export class Content {
     public description: string;
     public price: number;
     public contentStatus: string;
-    public paymentStatus: string;
+    public status_pagamento: string;
 
     constructor(
         id: number,
@@ -12,13 +12,13 @@ export class Content {
         description: string,
         price: number,
         contentStatus: string,
-        paymentStatus: string
+        status_pagamento: string
     ) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
         this.contentStatus = contentStatus;
-        this.paymentStatus = paymentStatus;
+        this.status_pagamento = status_pagamento;
     }
 }

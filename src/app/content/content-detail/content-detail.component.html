@@ -1,19 +1,29 @@
-<div class="row">
-    <div class="col-xs-12">
-        <h1>{{content.name}}</h1>
+<div class="container" *ngIf="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>{{content.name}}</h1>
+        </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-xs-12">
-        <h2>{{content.description}}</h2>
+    <div class="row">
+        <div class="col-xs-12">
+            <h2>{{content.description}}</h2>
+        </div>
     </div>
-</div>
-<hr>
-<div class="row">
-    <div class="col-xs-5">
-        <h3>Preço: {{content.price}} WIZ</h3>
+    <hr>
+    <div class="row">
+        <div class="col-xs-5">
+            <h3>Preço: {{content.price}} WIZ</h3>
+        </div>
+        <div class="col-xs-7">
+            <h3>Status: {{content.status_pagamento}}</h3>
+        </div>
     </div>
-    <div class="col-xs-7">
-        <h3>Status: {{content.paymentStatus}}</h3>
+    <div class="row">
+        <div class="col-xs-7" *ngIf="content.status_pagamento=='NOT_BOUGHT'">
+            <button type="button" (click)="onBuyClick()" class="btn btn-primary">COMPRAR</button>
+        </div>
+        <div class="col-xs-7" *ngIf="content.status_pagamento=='PAYMENT_MADE'">
+            <button type="button" class="btn btn-primary">DOWNLOAD</button>
+        </div>
     </div>
 </div>
