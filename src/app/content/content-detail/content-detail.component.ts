@@ -19,8 +19,9 @@ export class ContentDetailComponent implements OnInit {
   onBuyClick() {
     this.purchaseService.submitPurchase(this.content)
     .subscribe( purchase => {
-      console.log(JSON.stringify(purchase));
+      console.log(JSON.stringify(purchase))
+
+      this.purchaseService.emitPurchaseDoneEvent(purchase)
     })
   }
-
 }
