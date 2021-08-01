@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Content } from 'src/app/models/content.model';
 import { PurchaseService } from 'src/app/services/purchase.service';
+import { strict } from 'assert';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-content-detail',
@@ -11,7 +13,7 @@ export class ContentDetailComponent implements OnInit {
 
   @Input() content: Content;
 
-  constructor(private purchaseService: PurchaseService) { }
+  constructor(private purchaseService: PurchaseService, private userService: UserService) { }
 
   ngOnInit(): void {
   }
@@ -23,5 +25,9 @@ export class ContentDetailComponent implements OnInit {
       alert('Informe o seguinte no pagamento: ' + purchase.id_compra)
       this.purchaseService.emitPurchaseDoneEvent(purchase)
     })
+  }
+
+  onDownloadClick() {
+    window.open('http://localhost:8081/store/v1/content/' + String( this.content.id) + '/download?userId=' + this.userService.getUserLoggedIn(), "_blank");
   }
 }

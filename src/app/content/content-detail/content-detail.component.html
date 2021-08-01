@@ -23,7 +23,7 @@
             <button type="button" (click)="onBuyClick()" class="btn btn-primary">COMPRAR</button>
         </div>
         <div class="col-xs-7" *ngIf="content.status_pagamento=='PAYMENT_MADE'">
-            <button type="button" class="btn btn-primary">DOWNLOAD</button>
+            <button type="button" (click)="onDownloadClick()" class="btn btn-primary">DOWNLOAD</button>
         </div>
     </div>
 </div>
