@@ -20,7 +20,7 @@ export class ContentDetailComponent implements OnInit {
     this.purchaseService.submitPurchase(this.content)
     .subscribe( purchase => {
       console.log(JSON.stringify(purchase))
-
+      alert('Informe o seguinte no pagamento: ' + purchase.id_compra)
       this.purchaseService.emitPurchaseDoneEvent(purchase)
     })
   }

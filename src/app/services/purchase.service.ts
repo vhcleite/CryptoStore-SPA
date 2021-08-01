@@ -14,7 +14,7 @@ export class PurchaseService {
     purchaseDoneEvent = new EventEmitter<Purchase>()
 
     public submitPurchase(content: Content): Observable<Purchase>{
-        var newPurchase: Purchase = new Purchase(content.id, content.price)
+        var newPurchase: Purchase = new Purchase(null, content.id, content.price)
         console.log("new purchase: " + JSON.stringify(newPurchase))
         return this.http.post<Purchase>('http://localhost:8083/store/v1/users/' + this.userService.getUserLoggedIn() + '/purchase', 
         newPurchase)

@@ -1,3 +1,3 @@
 export class Purchase {
-    constructor(public content_id: number, public value: number) {}
+    constructor(public id_compra: number, public content_id: number, public value: number) {}
 }
