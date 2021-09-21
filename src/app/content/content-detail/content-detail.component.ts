@@ -19,14 +19,34 @@ export class ContentDetailComponent implements OnInit {
 
   onBuyClick() {
     this.purchaseService.submitPurchase(this.content)
-    .subscribe( purchase => {
-      console.log(JSON.stringify(purchase))
-      alert('Informe o seguinte identificado no pagamento: ' + purchase.id_compra + ' para a conta: 0x9c6960cc8c2034c7295ee0407352366df45cbffa')
-      this.purchaseService.emitPurchaseDoneEvent(purchase)
-    })
+      .subscribe(purchase => {
+        console.log(JSON.stringify(purchase))
+        alert('Informe a seguinte identificação no pagamento: ' + purchase.id_compra + ' para a conta: 0x9c6960cc8c2034c7295ee0407352366df45cbffa')
+        this.purchaseService.emitPurchaseDoneEvent(purchase)
+      })
   }
 
   onDownloadClick() {
-    window.open('http://localhost:8081/store/v1/content/' + String( this.content.id) + '/download?userId=' + this.authService.getUserLoggedIn(), "_blank");
+    window.open('http://localhost:8081/store/v1/content/' + String(this.content.id) + '/download?userId=' + this.authService.getUserLoggedIn(), "_blank");
+  }
+
+  getPaymentStatusString(paymentStatus: String) {
+    switch (paymentStatus) {
+      case "PAYMENT_MADE": {
+        return "Pagamento efetuado";
+      }
+      case "PAYMENT_NOT_MADE": {
+        return "Pagamento não efetuado";
+      }
+      case "PENDING_PAYMENT": {
+        return "Pagamento pendente";
+      }
+      case "NOT_BOUGHT": {
+        return "Não comprado";
+      }
+      default: {
+        return paymentStatus;
+      }
+    }
   }
 }
