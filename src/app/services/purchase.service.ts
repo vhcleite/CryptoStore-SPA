@@ -1,14 +1,14 @@
 import { Injectable, EventEmitter } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
-import { UserService } from './user.service';
 import { Purchase } from '../models/purchase.model';
 import { Content } from '../models/content.model';
 import { Observable } from 'rxjs';
+import { AuthService } from './auth.service';
 
 @Injectable({providedIn: 'root'})
 export class PurchaseService {
     
-    constructor(private http: HttpClient, private userService: UserService) { }
+    constructor(private http: HttpClient, private authService: AuthService) { }
 
 
     purchaseDoneEvent = new EventEmitter<Purchase>()
@@ -16,7 +16,7 @@ export class PurchaseService {
     public submitPurchase(content: Content): Observable<Purchase>{
         var newPurchase: Purchase = new Purchase(null, content.id, content.price)
         console.log("new purchase: " + JSON.stringify(newPurchase))
-        return this.http.post<Purchase>('http://localhost:8083/store/v1/users/' + this.userService.getUserLoggedIn() + '/purchase', 
+        return this.http.post<Purchase>('http://localhost:8083/store/v1/users/' + this.authService.getUserLoggedIn() + '/purchase', 
         newPurchase)
     }
 

@@ -1,8 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Content } from 'src/app/models/content.model';
 import { PurchaseService } from 'src/app/services/purchase.service';
-import { strict } from 'assert';
-import { UserService } from 'src/app/services/user.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-content-detail',
@@ -13,7 +12,7 @@ export class ContentDetailComponent implements OnInit {
 
   @Input() content: Content;
 
-  constructor(private purchaseService: PurchaseService, private userService: UserService) { }
+  constructor(private purchaseService: PurchaseService, private authService: AuthService) { }
 
   ngOnInit(): void {
   }
@@ -22,12 +21,12 @@ export class ContentDetailComponent implements OnInit {
     this.purchaseService.submitPurchase(this.content)
     .subscribe( purchase => {
       console.log(JSON.stringify(purchase))
-      alert('Informe o seguinte no pagamento: ' + purchase.id_compra)
+      alert('Informe o seguinte identificado no pagamento: ' + purchase.id_compra + ' para a conta: 0x9c6960cc8c2034c7295ee0407352366df45cbffa')
       this.purchaseService.emitPurchaseDoneEvent(purchase)
     })
   }
 
   onDownloadClick() {
-    window.open('http://localhost:8081/store/v1/content/' + String( this.content.id) + '/download?userId=' + this.userService.getUserLoggedIn(), "_blank");
+    window.open('http://localhost:8081/store/v1/content/' + String( this.content.id) + '/download?userId=' + this.authService.getUserLoggedIn(), "_blank");
   }
 }
