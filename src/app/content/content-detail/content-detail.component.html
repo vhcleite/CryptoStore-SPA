@@ -1,35 +1,37 @@
-<div class="panel panel-primary" *ngIf="content">
-    <div class="panel-heading">
-        <h3 class="panel-title">{{content.name}}</h3>
-    </div>
-    <div class="panel-body">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-8">
-                    <p>{{content.description}}</p>
+<div *ngIf="content">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{content.name}}</h3>
+        </div>
+        <div class="panel-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <p>{{content.description}}</p>
+                    </div>
                 </div>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col-xs-5">
-                    <p>Preço: {{content.price}} WIZ</p>
+                <hr>
+                <div class="row">
+                    <div class="col-xs-5">
+                        <p>Preço: {{content.price}} WIZ</p>
+                    </div>
+                    <div class="col-xs-7">
+                        <p>Status: {{getPaymentStatusString(content.payment_status)}}</p>
+                    </div>
                 </div>
-                <div class="col-xs-7">
-                    <p>Status: {{getPaymentStatusString(content.payment_status)}}</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-7" *ngIf="content.payment_status=='NOT_BOUGHT'">
-                    <button type="button" (click)="onBuyClick()" class="btn btn-primary">COMPRAR</button>
-                </div>
-                <div class="col-xs-7" *ngIf="content.payment_status=='PAYMENT_MADE'">
-                    <button type="button" (click)="onDownloadClick()" class="btn btn-primary">DOWNLOAD</button>
+                <div class="row">
+                    <div class="col-xs-7" *ngIf="content.payment_status=='NOT_BOUGHT'">
+                        <button type="button" (click)="onBuyClick()" class="btn btn-success">COMPRAR</button>
+                    </div>
+                    <div class="col-xs-7" *ngIf="content.payment_status=='PAYMENT_MADE'">
+                        <button type="button" (click)="onDownloadClick()" class="btn btn-primary">DOWNLOAD</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<div class="well well-sm" *ngIf="content.payment_status=='PENDING_PAYMENT'">
-    <h3>Pagamento</h3>
-    <p>{{content.pending_payment_message}}</p>
+    <div class="well well-sm" *ngIf="content.payment_status=='PENDING_PAYMENT'">
+        <h3>Pagamento</h3>
+        <p>{{content.pending_payment_message}}</p>
+    </div>
 </div>
