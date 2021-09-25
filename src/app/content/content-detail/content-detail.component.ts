@@ -21,7 +21,6 @@ export class ContentDetailComponent implements OnInit {
     this.purchaseService.submitPurchase(this.content)
       .subscribe(purchase => {
         console.log(JSON.stringify(purchase))
-        alert('Informe a seguinte identificação no pagamento: ' + purchase.id_compra + ' para a conta: 0x9c6960cc8c2034c7295ee0407352366df45cbffa')
         this.purchaseService.emitPurchaseDoneEvent(purchase)
       })
   }
