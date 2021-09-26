@@ -22,7 +22,7 @@ export class ContentDetailComponent implements OnInit {
       .subscribe(purchase => {
         console.log(JSON.stringify(purchase))
         this.purchaseService.emitPurchaseDoneEvent(purchase)
-      })
+      })  
   }
 
   onDownloadClick() {

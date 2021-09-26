@@ -1,0 +1,20 @@
+<div class="container">
+    <form class="form-signin" #registerForm='ngForm' (ngSubmit)="register()">
+        <h2 class="form-signin-heading">Novo usuário</h2>
+        <hr>
+
+        <div class="form-group">
+            <label class="sr-only">Id Usuário</label>
+            <input class="form-control" placeholder="Id Usuário" required="true" autofocus=""
+            required name='userId' [(ngModel)]="model.userId">
+        </div>
+
+        <div class="form-group">
+            <label for="inputPassword" class="sr-only">Senha</label>
+            <input type="password" id="inputPassword" class="form-control" placeholder="Senha" required="true"
+            required name='paswword' [(ngModel)]="model.password">
+        </div>
+
+        <button class="btn btn-lg btn-primary btn-block" [disabled]='!registerForm.valid' type="submit">Sign in</button>
+    </form>
+</div>

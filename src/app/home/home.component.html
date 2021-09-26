@@ -5,6 +5,17 @@
     <p>Este site é uma loja que tem como objetivo ser uma prova de conceito para micropagamentos utilizando
         criptomoedas como meio de pagamentos.</p>
     <p>Comece já a sua experiência e visite nossos conteúdos para compra!</p>
-    <p>As compras deverão ser pagas utilizando o Raiden Network. Para saber mais sobre a plataforma de pagamento utilize o link abaixo.</p>
-    <p><a class="btn btn-primary btn-lg" href="https://raiden.network/" role="button">Sobre o Raiden Network</a></p>
+    <p>As compras deverão ser pagas utilizando o Raiden Network. Para saber mais sobre a plataforma de pagamento utilize
+        o link abaixo.</p>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-7">
+                <a class="btn btn-primary btn-lg" href="https://raiden.network/" role="button">Sobre o Raiden
+                    Network</a>
+            </div>
+            <div class="col-xs-5" *ngIf="!loggedIn()">
+                <a class="btn btn-success btn-lg" href="/newuser" role="button">Novo usuário</a>
+            </div>
+        </div>
+    </div>
 </div>

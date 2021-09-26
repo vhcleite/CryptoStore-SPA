@@ -11,10 +11,12 @@ import { ContentDetailComponent } from './content/content-detail/content-detail.
 import { ContentBaseComponent } from './content/content-base/content-base.component';
 import { ContentItemComponent } from './content/content-item/content-item.component';
 import { HomeComponent } from './home/home.component';
+import { NewuserComponent } from './newuser/newuser.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'contents', component: ContentBaseComponent }
+  { path: 'contents', component: ContentBaseComponent },
+  { path: 'newuser', component: NewuserComponent }
 ]
 
 @NgModule({
@@ -25,7 +27,8 @@ const appRoutes: Routes = [
     ContentDetailComponent,
     ContentBaseComponent,
     ContentItemComponent,
-    HomeComponent
+    HomeComponent,
+    NewuserComponent
   ],
   imports: [
     BrowserModule,

@@ -24,7 +24,7 @@ export class AuthService {
     return localStorage.getItem('user')
   }
 
-  public setUserLoggedIn(user: string) {
+  private setUserLoggedIn(user: string) {
     localStorage.setItem('user', user);
   }
 }
