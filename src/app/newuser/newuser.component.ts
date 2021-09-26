@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../models/user.model';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
+import { AlertifyService } from '../services/alertify.service';
 
 @Component({
   selector: 'app-newuser',
@@ -12,9 +13,14 @@ export class NewuserComponent implements OnInit {
 
   model: any = {};
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(
+    private userService: UserService, 
+    private router: Router,
+    private alertService: AlertifyService
+    ) { }
 
   ngOnInit(): void {
+    this.alertService.alert("teste")
   }
 
   register() {
@@ -31,6 +37,6 @@ export class NewuserComponent implements OnInit {
 
   private handleError(error: any) { 
     let errMsg = (error.error.message) ? error.error.message : error.message;
-    alert(errMsg)
+    this.alertService.error(errMsg)
   }
 }
