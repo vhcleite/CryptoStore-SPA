@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-header',
@@ -17,8 +18,10 @@ export class HeaderComponent implements OnInit {
   }
 
   login() {
-    this.authService.login(this.model);
-    this.router.navigate(["/contents"])
+    console.log(this.model)
+    var credentials = new User(this.model.username, this.model.password)
+
+    this.authService.login(credentials);
   }
 
   loggedIn() {
