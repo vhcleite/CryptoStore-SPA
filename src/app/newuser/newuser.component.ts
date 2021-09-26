@@ -30,7 +30,7 @@ export class NewuserComponent implements OnInit {
   }
 
   private handleError(error: any) { 
-    let errMsg = (error.error.message) ? error.error.message : 'erro ao criar usuário';
+    let errMsg = (error.error.message) ? error.error.message : error.message;
     alert(errMsg)
   }
 }
