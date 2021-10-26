@@ -20,7 +20,6 @@ export class NewuserComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.alertService.alert("teste")
   }
 
   register() {
@@ -28,7 +27,7 @@ export class NewuserComponent implements OnInit {
     console.log(newUser)
     this.userService.createUser(newUser)
     .subscribe(user => {
-      alert("user " + user.id + " created")
+      this.alertService.success('Usuário criado com sucesso')
       this.router.navigate(["/"])
     }, error => {
       this.handleError(error)
